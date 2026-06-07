@@ -1,6 +1,8 @@
 package com.example.EventManagementSystem.controller;
 
-import com.example.EventManagementSystem.dto.*;
+import com.example.EventManagementSystem.dto.request.LoginRequest;
+import com.example.EventManagementSystem.dto.request.RegisterRequest;
+import com.example.EventManagementSystem.dto.response.AuthResponse;
 import com.example.EventManagementSystem.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

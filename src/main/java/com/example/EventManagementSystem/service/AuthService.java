@@ -1,6 +1,8 @@
 package com.example.EventManagementSystem.service;
 
-import com.example.EventManagementSystem.dto.*;
+import com.example.EventManagementSystem.dto.request.LoginRequest;
+import com.example.EventManagementSystem.dto.request.RegisterRequest;
+import com.example.EventManagementSystem.dto.response.AuthResponse;
 import com.example.EventManagementSystem.entity.Role;
 import com.example.EventManagementSystem.entity.User;
 import com.example.EventManagementSystem.exception.EmailAlreadyExistsException;
