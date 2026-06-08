@@ -113,4 +113,48 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest()
                 .body(errors);
     }
+
+    @ExceptionHandler(
+            InvalidSeatConfigurationException.class
+    )
+    public ResponseEntity<ErrorResponse>
+    handleInvalidSeatConfigurationException(
+            InvalidSeatConfigurationException ex
+    ) {
+
+        ErrorResponse errorResponse =
+                new ErrorResponse(
+                        LocalDateTime.now(),
+                        HttpStatus.BAD_REQUEST.value(),
+                        "Bad Request",
+                        ex.getMessage()
+                );
+
+        return new ResponseEntity<>(
+                errorResponse,
+                HttpStatus.BAD_REQUEST
+        );
+    }
+
+    @ExceptionHandler(
+            ScreenAlreadyExistsException.class
+    )
+    public ResponseEntity<ErrorResponse>
+    handleScreenAlreadyExistsException(
+            ScreenAlreadyExistsException ex
+    ) {
+
+        ErrorResponse errorResponse =
+                new ErrorResponse(
+                        LocalDateTime.now(),
+                        HttpStatus.BAD_REQUEST.value(),
+                        "Bad Request",
+                        ex.getMessage()
+                );
+
+        return new ResponseEntity<>(
+                errorResponse,
+                HttpStatus.BAD_REQUEST
+        );
+    }
 }
