@@ -157,4 +157,117 @@ public class GlobalExceptionHandler {
                 HttpStatus.BAD_REQUEST
         );
     }
+
+    @ExceptionHandler(
+            MovieAlreadyExistsException.class
+    )
+    public ResponseEntity<ErrorResponse>
+    handleMovieAlreadyExistsException(
+            MovieAlreadyExistsException ex
+    ) {
+
+        ErrorResponse errorResponse =
+                new ErrorResponse(
+                        LocalDateTime.now(),
+                        HttpStatus.BAD_REQUEST.value(),
+                        "Bad Request",
+                        ex.getMessage()
+                );
+
+        return new ResponseEntity<>(
+                errorResponse,
+                HttpStatus.BAD_REQUEST
+        );
+    }
+
+
+    @ExceptionHandler(
+            ShowConflictException.class
+    )
+    public ResponseEntity<ErrorResponse>
+    handleShowConflictException(
+            ShowConflictException ex
+    ) {
+
+        ErrorResponse errorResponse =
+                new ErrorResponse(
+                        LocalDateTime.now(),
+                        HttpStatus.BAD_REQUEST.value(),
+                        "Bad Request",
+                        ex.getMessage()
+                );
+
+        return new ResponseEntity<>(
+                errorResponse,
+                HttpStatus.BAD_REQUEST
+        );
+    }
+
+
+    @ExceptionHandler(
+            SeatAlreadyBookedException.class
+    )
+    public ResponseEntity<ErrorResponse>
+    handleSeatAlreadyBookedException(
+            SeatAlreadyBookedException ex
+    ) {
+
+        ErrorResponse errorResponse =
+                new ErrorResponse(
+                        LocalDateTime.now(),
+                        HttpStatus.BAD_REQUEST.value(),
+                        "Bad Request",
+                        ex.getMessage()
+                );
+
+        return new ResponseEntity<>(
+                errorResponse,
+                HttpStatus.BAD_REQUEST
+        );
+    }
+
+
+    @ExceptionHandler(
+            InvalidShowSeatException.class
+    )
+    public ResponseEntity<ErrorResponse>
+    handleInvalidShowSeatException(
+            InvalidShowSeatException ex
+    ) {
+
+        ErrorResponse errorResponse =
+                new ErrorResponse(
+                        LocalDateTime.now(),
+                        HttpStatus.BAD_REQUEST.value(),
+                        "Bad Request",
+                        ex.getMessage()
+                );
+
+        return new ResponseEntity<>(
+                errorResponse,
+                HttpStatus.BAD_REQUEST
+        );
+    }
+
+    @ExceptionHandler(
+            BookingAccessDeniedException.class
+    )
+    public ResponseEntity<ErrorResponse>
+    handleBookingAccessDeniedException(
+            BookingAccessDeniedException ex
+    ) {
+
+        ErrorResponse errorResponse =
+                new ErrorResponse(
+                        LocalDateTime.now(),
+                        HttpStatus.FORBIDDEN.value(),
+                        "Forbidden",
+                        ex.getMessage()
+                );
+
+        return new ResponseEntity<>(
+                errorResponse,
+                HttpStatus.FORBIDDEN
+        );
+    }
 }

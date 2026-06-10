@@ -8,16 +8,25 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "shows")
+@Table(
+        name = "show_seats",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        columnNames = {
+                                "show_id",
+                                "seat_id"
+                        }
+                )
+        }
+)
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Show extends BaseEntity {
+public class ShowSeat extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,28 +34,22 @@ public class Show extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
-            name = "movie_id",
+            name = "show_id",
             nullable = false
     )
-    private Movie movie;
+    private Show show;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
-            name = "screen_id",
+            name = "seat_id",
             nullable = false
     )
-    private Screen screen;
-
-    @Column(nullable = false)
-    private LocalDateTime startTime;
-
-    @Column(nullable = false)
-    private LocalDateTime endTime;
-
-    @Column(nullable = false)
-    private BigDecimal basePrice;
+    private Seat seat;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private ShowStatus status;
+    private ShowSeatStatus status;
+
+    @Column(nullable = false)
+    private BigDecimal price;
 }
